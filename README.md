@@ -7,33 +7,48 @@ Copyright (c) 2014-2023 Energy Systems Research Unit, University of Strathclyde,
 
 Contents
 1. Getting Started
+   
     a. GOMap v3.11
+   
     b. Installation
+   
     c. Running QGIS v3.28.1
+   
     d. Extracting GOMap
+   
     e. Setup
-2. Running GOMap
+   
+3. Running GOMap
+4. 
     a. Load Glasgow project
+   
     b. Toolbar
 	 - GOMap
 	 - Save project
 	 - Identify/Select mode
 	 - About
 	 - Tools
+
     c. Focus selection
 	 - Scope
 	 - Aspects
 	 - Scoring
 	 - Weighting
+     
     d. Updating factor with single score
+   
     e. Updating factor with multiple scores
+   
     f. Land availability
+   
     g. Energy yield estimator
+   
     h. Technology scripts
-3. New GOMap project
-4. Change resolution
-5. Other useful plugins
-6. Contact
+   
+6. New GOMap project
+7. Change resolution
+8. Other useful plugins
+9. Contact
 
 ********************************************************************************************************
 
