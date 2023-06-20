@@ -1,3 +1,4 @@
+# GOMap
 ********************************************************************************************************
 Copyright (c) 2014-2023 Energy Systems Research Unit, University of Strathclyde, All Rights Reserved.  
                                                                                                        
