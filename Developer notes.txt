@@ -1,0 +1,49 @@
+################################
+###### Update icons ############
+
+#To update icons, run the "compile and update icons.bat" file within the GOMap directory and then edit/add the paths of the icons in the "resources.qrc" file.
+
+
+############################################################
+###### Access GOMap through QGIS Python Console ############
+
+#To access GOMap from QGIS Python Console:
+
+from qgis import utils
+gomap = utils.plugins['GOMap']
+
+
+#To run a GOMap function such as onClosePlugin():
+
+gomap.onClosePlugin()
+
+
+#Use Plugin Reloader to quickly reload and test GOMap. Then simply reload plugin:
+
+gomap = utils.plugins['GOMap']
+
+#To run a function stored in another module (i.e. General)
+
+gomap.General.update_GOMap_plugin(None)
+
+
+#To search for objects in a dockwidget container:
+
+for objects in gomap.land_availability_dockwidget.children():
+	print(objects.objectName())
+
+
+#To extract text from energy yield estimator textbox:
+
+gomap.land_availability_dockwidget.children()[4].children()[2].children()[20].toPlainText()
+
+
+#To hide/show part of create_scope_dockwidget() interface:
+
+gomap.create_scope_dockwidget.children()[4].children()[4].hide()
+gomap.create_scope_dockwidget.children()[4].children()[4].show()
+
+
+#Check if listwidget() is populated or count no of items in list:
+
+gomap.create_scope_dockwidget.children()[4].children()[3].children()[1].count()

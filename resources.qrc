@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/plugins/GOMap">
+        <file>icons/GOMap.png</file>
+        <file>icons/About.png</file>
+        <file>icons/test.png</file>
+        <file>icons/GOMap_Update.png</file>
+        <file>icons/Developer_tools.png</file>        
+        <file>icons/GOMapLive_Off.png</file>
+        <file>icons/GOMapLive_On.png</file>
+        <file>icons/Add_Layer.png</file>
+        <file>icons/Create_polygon.png</file>
+        <file>icons/Save_Constraint.png</file>
+        <file>icons/Configure.png</file>
+        <file>icons/PV_Panel.png</file>
+        <file>icons/PV_rooftop.png</file>        
+        <file>icons/Wind_Turbine.png</file>
+        <file>icons/Local_District_Heating.png</file>
+        <file>icons/Identify_Features.png</file>
+        <file>icons/Select_Features.png</file>
+    </qresource>
+</RCC>

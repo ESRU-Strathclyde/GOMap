@@ -1,0 +1,21 @@
+Thanks are given to the following people/organisations who have provided free open-source solutions:
+
+- John McNamara - Python package "XlsxWriter-1.3.7" for Excel file editing (https://pypi.org/project/XlsxWriter/).
+
+- Phaseit, Inc. - Python "PyPDF2" for PDF file creation (https://pypi.python.org/pypi/PyPDF2/1.26.0).
+
+- https://dryicons.com/ - for their free-to-use graphic icons
+
+- Mehmet Selim BILGIN - EasyAHP plugin for QGIS (https://github.com/MSBilgin/EasyAHP) (https://plugins.qgis.org/plugins/EasyAHP/)
+
+
+#################################
+
+
+The GOMap tool was developed at the Energy Systems Research Unit, University of Strathclyde, Glasgow, Scotland, UK.
+The following are individuals who have contributed to the development of GOMap:
+
+Raheal McGhee (main author)
+Prof. Joseph Clarke
+Katalin Svehla
+Ciaran Higgins
