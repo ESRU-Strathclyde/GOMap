@@ -8,7 +8,7 @@ Copyright (c) 2014-2023 Energy Systems Research Unit, University of Strathclyde,
 Contents
 1. Getting Started
    
-    a. GOMap v3.11
+    a. GOMap v3.11.1
    
     b. Installation
    
@@ -54,7 +54,7 @@ Contents
 
 1. Getting Started
 
-1.a. GOMap v3.11
+1.a. GOMap v3.11.1
 
     GOMap - A geospatial opportunity map for identifying suitable areas for the deployment of energy systems.
     Takes into consideration policy and technical aspects, both of which consists of a number of comprehensive factors. 
