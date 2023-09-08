@@ -262,7 +262,7 @@ Contents
     Inside the "Shapefile conversion" directory, there are 3 folders.
     The "City" folder must contain a polygon shapefile covering the entire extent of the desired area (e.g. the boundaries of Tokyo).
     The "Scope" folder is optional but can contain a polygon shapefile which covers specific areas within the city shapefile.
-    The "Factors" folder should contain all factors for ONE ASPECT AT A TIME. Polygon, point and line shapefiles can be used.
+    The "Factors" folder should contain all factors for one aspect. The script can be run again for factors from another aspect. Polygon, point and line shapefiles can be used.
     For line shapefiles, ensure there is a "Width" field (e.g. to represent motorways, pipes etc.); for point shapefiles, ensure there is a "Name" field (e.g. to represent the name of a substation etc.).
     These shapefiles should be placed in the relevant scoring folders where "Score 1" means all shapefiles will be given a score of 1; "Score 2" for a score of 2 etc.
     The "Existing score" folder should contain shapefiles which either already possess a score or given a score at a later stage.
