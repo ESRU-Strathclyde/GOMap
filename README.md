@@ -5,6 +5,8 @@ Copyright (c) 2014-2023 Energy Systems Research Unit, University of Strathclyde,
                                                                                                        
 ********************************************************************************************************
 
+![GOMap_GUI](https://github.com/ESRU-Strathclyde/GOMap/assets/108804544/278001c0-6887-4d82-bda5-206f4cb3d643)
+
 Contents
 1. Getting Started
    
