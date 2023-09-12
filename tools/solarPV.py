@@ -7,7 +7,7 @@
                               -------------------
         begin                : 2016-12-07
         git sha              : $Format:%H$
-        copyright            : (C) 2022 by ESRU, University of Strathclyde
+        copyright            : (C) 2023 by ESRU, University of Strathclyde
         email                : esru@strath.ac.uk
  ***************************************************************************/
 
@@ -142,6 +142,7 @@ class PV:
         energy_spinBox = self.pv_generation_dockwidget.energy_spinBox
         inter_row_spinbox = self.pv_generation_dockwidget.inter_row_spinbox
         orientation_spinbox = self.pv_generation_dockwidget.orientation_spinbox
+        site_roof_orientation_checkBox = self.pv_generation_dockwidget.site_roof_orientation_checkBox
         read_PV_pushButton = self.pv_generation_dockwidget.read_PV_pushButton
         weatherData_fileWidget = self.pv_generation_dockwidget.weatherData_fileWidget
         #PV_distance_x = self.pv_generation_dockwidget.PV_distance_x
@@ -163,6 +164,7 @@ class PV:
             energy_spinBox.clear()
             inter_row_spinbox.clear()
             orientation_spinbox.clear()
+            site_roof_orientation_checkBox.setEnabled(True)
         else:
             length_spinbox.setEnabled(True)
             width_spinbox.setEnabled(True)
@@ -178,6 +180,8 @@ class PV:
             energy_spinBox.setValue(345.6)
             inter_row_spinbox.setValue(7.4)
             orientation_spinbox.setValue(205)
+            site_roof_orientation_checkBox.setEnabled(False)
+            site_roof_orientation_checkBox.setChecked(False)
 
 
 #-------------------------------Load PV model-------------------------------------------------------
@@ -973,6 +977,7 @@ class PV:
                 if mode == 'automatic_mode':
                     geom = QgsGeometry(f.geometry())
                     output_geometry = geom.pointOnSurface()
+
                     # Clone feature to transform to new coordinates system
                     clone_geom = QgsGeometry(output_geometry)
                     # Transform feature's geometry
@@ -994,6 +999,10 @@ class PV:
                         initial_PV_orientation, initial_max_angle, initial_max_energy = self.PV_model(lat, lon, weather_data_frame, ground_reflectance, min_orientation, max_orientation, 10, Pstc, temp_coefficient, length, width, panel_area, 0, 91, 10, False)
                         PV_orientation, max_angle, max_energy, inter_row_spacing = self.PV_model(lat, lon, weather_data_frame, ground_reflectance, initial_PV_orientation - 5, initial_PV_orientation + 5, 1, Pstc, temp_coefficient, length, width, panel_area, initial_max_angle -5, initial_max_angle + 5, 1, True)
 
+                        if self.pv_generation_dockwidget.site_roof_orientation_checkBox.isChecked():
+                            bound_geo, bound_area, bound_angle, bound_width, bound_height = geom.orientedMinimumBoundingBox()
+                            PV_orientation = float(bound_angle)
+
                         distance_x, state_x, distance_y, state_y = self.check_horizontal_distance(length, width, PV_orientation, max_angle, horizontal_spacing, inter_row_spacing)                        
                         angle_energy_at_coordinate[coord] = [max_angle, max_energy]
 
@@ -1012,6 +1021,8 @@ class PV:
 
                 try:
                     land_area = f.geometry().area()
+                    
+                    
                     total_panel_area = 0
                     power_sum = 0
                     progress_bar.setValue(progress_bar.value() + 1)
@@ -1033,7 +1044,11 @@ class PV:
                                     power_sum += power
                                     total_panel_area += geom_type.area()
                                     centroid = geom_type.centroid().asPoint()
-                                    geom_type.rotate(PV_orientation, centroid)
+                                    
+
+
+                                    geom_type.rotate(PV_orientation, centroid)                                    
+                                    
                                     couples_id_geom.append([f.id(), geom_type])
                                     fet.setGeometry(geom_type)
                                     fet.setAttributes([f['ID'], int(max_angle), int(PV_orientation), round(power, 1), round(inter_row_spacing,1)])
@@ -1347,6 +1362,7 @@ class PV:
         house_equivalent = int(total_power_generation / house_consumption)
 
         stats = str(
+            '<br>' +
             '<b>PV specification (' + str(mode.capitalize().replace('_',' ')) + ')</b>' +
             '<br>Dwelling consumption (kWh/yr): ' + str("{:,.0f}".format(house_consumption)) +
             '<br>Power output (kWh/y): ' + energy +

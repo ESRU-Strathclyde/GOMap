@@ -7,7 +7,7 @@
                               -------------------
         begin                : 2016-12-07
         git sha              : $Format:%H$
-        copyright            : (C) 2022 by ESRU, University of Strathclyde
+        copyright            : (C) 2023 by ESRU, University of Strathclyde
         email                : esru@strath.ac.uk
  ***************************************************************************/
 
@@ -23,6 +23,7 @@
 
 import datetime, glob, os, processing, re, requests
 from requests.exceptions import HTTPError, Timeout
+from packaging import version
 from ..resources import *
 from functools import partial
 from qgis.core import QgsProject, QgsLayerTree, QgsField, QgsLayerTreeLayer, QgsVectorLayer, QgsVectorFileWriter, edit, QgsMapLayer, QgsLayerTreeGroup, Qgis
@@ -83,18 +84,19 @@ class General:
             latest_version = var_string[7:11]
             #print('Latest version is:', latest_version)
 
-            if float(latest_version) > float(current_version):
+            #if float(latest_version) > float(current_version):
+            if version.parse(str(latest_version)) > version.parse(str(current_version)):
                 iface.messageBar().clearWidgets()
                 self.iface.messageBar().pushMessage(
                     'GOMap v' + latest_version + ' available', '<a href="https://www.esru.strath.ac.uk/Downloads/GOMap/' + var_string + '"> Click here to download the latest version.</a>',
                 Qgis.Success, message_timer)
 
             if not startup:
-                if float(latest_version) == float(current_version):
+                if version.parse(str(latest_version)) == version.parse(str(current_version)):
                     self.iface.messageBar().clearWidgets()
                     self.iface.messageBar().pushMessage('The latest GOMap version is already installed.', Qgis.Success, message_timer)
 
-                if float(latest_version) < float(current_version):
+                if version.parse(str(latest_version)) < version.parse(str(current_version)):
                     self.iface.messageBar().clearWidgets()
                     self.iface.messageBar().pushMessage('This version of GOMap differs with the online version. If this is a developer\'s version, make sure ' \
                         + 'to upload it to the relevant repository', Qgis.Critical, message_timer)
